@@ -2,12 +2,11 @@ name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
-  build:
+  validate:
 
     runs-on: ubuntu-latest
 
@@ -26,7 +25,7 @@ jobs:
           node-version: 22
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Start Check
-        run: node server.js
+      - name: Run Lint
+        run: npm run lint
